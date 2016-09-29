@@ -26,8 +26,8 @@
       <file leaf-file-name="AttendanceManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AttendanceManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+            <state relative-caret-position="635">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -403,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1475163419005</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="My First Commit.">
+      <created>1475163519996</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1475163519996</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -461,8 +468,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/AttendanceManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+        <state relative-caret-position="635">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
