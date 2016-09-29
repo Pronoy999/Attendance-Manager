@@ -30,7 +30,7 @@ public class AttendanceManager {
             for(int i=0;i<subjects.length;i++) {
                 attendanceRecord[i] = (String) attendance.get(subjects[i]);
             }
-            for(i=0;i<subjects.length;i++){
+            for(int i=0;i<subjects.length;i++){
                 obj3.print(subjects[i]+": "+attendanceRecord[i]);
             }
     }
