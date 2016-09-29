@@ -13,6 +13,7 @@ public class AttendanceManager {
         String semester=(String)jsObject.get("Semester");
         String rollNumber=(String) jsObject.get("Roll");
         String subjects[]=(String [])jsObject.get("Subjects");
+        String totalAttendance[]=(String [])jsObject.get("Total");
         File f= new File(fileName);
         if(!f.exists()){
             fileWrite(name,age,semester,rollNumber,subjects);
@@ -31,7 +32,8 @@ public class AttendanceManager {
                 attendanceRecord[i] = (String) attendance.get(subjects[i]);
             }
             for (int i = 0; i < subjects.length; i++) {
-                obj3.print(subjects[i] + ": " + attendanceRecord[i]);
+                double percentage=(attendanceRecord[i]/totalAttendance[i])*100;
+                obj3.print(subjects[i] + ": " + attendanceRecord[i]+" "+totalAttendance[i]+" "+percentage);
                 obj3.println();
             }
             obj3.close();
@@ -54,5 +56,8 @@ public class AttendanceManager {
             obj3.close();
         }
         catch (Exception e){System.out.println("ERROR: "+e);}
+    }
+    public JSONObject getPercentage(){
+
     }
 }
