@@ -1,5 +1,6 @@
 import org.json.simple.JSONObject;
 import java.io.*;
+import java.util.Scanner;
 
 /**
  * Created by pronoymukherjee on 29/09/16.
@@ -7,12 +8,14 @@ import java.io.*;
 public class AttendanceManager {
     String fileName="Info.txt";
     String fileName1="Details.txt";
+    int totalSubjects;
     public void getAttendanceRecord(JSONObject jsObject){
-        String name=(String) jsObject.get("Name");
-        String age=(String)jsObject.get("Age");
-        String semester=(String)jsObject.get("Semester");
-        String rollNumber=(String) jsObject.get("Roll");
+        name=(String) jsObject.get("Name");
+        age=(String)jsObject.get("Age");
+        semester=(String)jsObject.get("Semester");
+        rollNumber=(String) jsObject.get("Roll");
         String subjects[]=(String [])jsObject.get("Subjects");
+        totalSubjects=subjects.length;
         String totalAttendance[]=(String [])jsObject.get("Total");
         File f= new File(fileName);
         if(!f.exists()){
@@ -40,6 +43,7 @@ public class AttendanceManager {
         }
         catch(Exception e){System.out.println("ERROR: "+e);}
     }
+    String name,age,rollNumber,semester;
     public void fileWrite(String name,String age,String semester, String rollNumber,String subjects[]){
         try {
             FileWriter obj1 = new FileWriter(fileName, false);
@@ -58,6 +62,49 @@ public class AttendanceManager {
         catch (Exception e){System.out.println("ERROR: "+e);}
     }
     public JSONObject getPercentage(){
+        JSONObject object= new JSONObject();
+        try {
+            FileReader obj1 = new FileReader(fileName1);
+            Scanner obj2= new Scanner(obj1);
+            while(obj2.hasNext()){
+                String t=obj2.nextLine();
+                char ch;int i;String subject="";
+                for(i=0;i<t.length();i++){
+                    ch=t.charAt(i);
+                    if((int)ch>=48 && (int)ch<=57) break;
+                    subject+=ch;
+                }
+                double percentage=Double.parseDouble(t.substring(t.lastIndexOf(' ')+1));
+                object.put(subject,percentage);
+            }
+            obj2.close();
+        }
+        catch (Exception e){System.out.println("ERROR: "+e);}
+        return object;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getAge() {
+        return age;
+    }
+    public String getSemester(){
+        return semester;
+    }
+    public String getRollNumber(){
+        return rollNumber;
+    }
+    public String[] getSubjects(){
+        String subjects[]=new String[totalSubjects];
+        try{
+            FileReader obj1= new FileReader(fileName);
+            Scanner obj2= new Scanner(obj1);
+            while(obj2.hasNext()){
+                String t=obj2.nextLine();
+                if(t.equalsIgnoreCase("Subjects: ")){
 
+                }
+            }
+        }
     }
 }
