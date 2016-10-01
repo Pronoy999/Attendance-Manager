@@ -35,7 +35,7 @@ public class AttendanceManager {
                 attendanceRecord[i] = (String) attendance.get(subjects[i]);
             }
             for (int i = 0; i < subjects.length; i++) {
-                double percentage=(attendanceRecord[i]/totalAttendance[i])*100;
+                double percentage=(Integer.parseInt(attendanceRecord[i])/Integer.parseInt(totalAttendance[i])*100);
                 obj3.print(subjects[i] + ": " + attendanceRecord[i]+" "+totalAttendance[i]+" "+percentage);
                 obj3.println();
             }
@@ -96,15 +96,21 @@ public class AttendanceManager {
     }
     public String[] getSubjects(){
         String subjects[]=new String[totalSubjects];
+        int i=0;
         try{
             FileReader obj1= new FileReader(fileName);
             Scanner obj2= new Scanner(obj1);
             while(obj2.hasNext()){
                 String t=obj2.nextLine();
                 if(t.equalsIgnoreCase("Subjects: ")){
-
+                    while(obj2.hasNext()){
+                        subjects[i++]=obj2.nextLine();
+                    }
+                    break;
                 }
             }
         }
+        catch (Exception e){System.out.println("ERROR: "+e);}
+        return subjects;
     }
 }
