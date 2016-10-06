@@ -8,8 +8,12 @@ import java.util.Scanner;
 public class AttendanceManager {
     String fileName="Info.txt";
     String fileName1="Details.txt";
+    JSONObject jsObject;
     int totalSubjects;
-    public void getAttendanceRecord(JSONObject jsObject){
+    public AttendanceManager(JSONObject j){
+        jsObject=j;
+    }
+    public void getAttendanceRecord(){
         name=(String) jsObject.get("Name");
         age=(String)jsObject.get("Age");
         semester=(String)jsObject.get("Semester");
@@ -29,7 +33,7 @@ public class AttendanceManager {
             FileWriter obj1 = new FileWriter(fileName1, false);
             BufferedWriter obj2 = new BufferedWriter(obj1);
             PrintWriter obj3 = new PrintWriter(obj2);
-            JSONObject attendance = (JSONObject) jsObject.get("attendance");
+            JSONObject attendance = (JSONObject) jsObject.get("Attendance");
             String attendanceRecord[] = new String[subjects.length];
             for (int i = 0; i < subjects.length; i++) {
                 attendanceRecord[i] = (String) attendance.get(subjects[i]);
@@ -95,22 +99,7 @@ public class AttendanceManager {
         return rollNumber;
     }
     public String[] getSubjects(){
-        String subjects[]=new String[totalSubjects];
-        int i=0;
-        try{
-            FileReader obj1= new FileReader(fileName);
-            Scanner obj2= new Scanner(obj1);
-            while(obj2.hasNext()){
-                String t=obj2.nextLine();
-                if(t.equalsIgnoreCase("Subjects: ")){
-                    while(obj2.hasNext()){
-                        subjects[i++]=obj2.nextLine();
-                    }
-                    break;
-                }
-            }
-        }
-        catch (Exception e){System.out.println("ERROR: "+e);}
+        String subjects[]=(String[])jsObject.get("Subjects");
         return subjects;
     }
 }
